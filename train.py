@@ -5,7 +5,7 @@ Training.
 '''
 
 from data_load import load_vocab, load_data
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import tqdm
 from hyperparams import Hyperparams as hp
 import codecs
