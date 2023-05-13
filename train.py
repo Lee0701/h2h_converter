@@ -6,6 +6,7 @@ Training.
 
 from data_load import load_vocab, load_data
 import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import tqdm
 from hyperparams import Hyperparams as hp
 import codecs

@@ -1,6 +1,7 @@
 
 from data_load import load_vocab, load_data, gen_data
 import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import tqdm
 from hyperparams import Hyperparams as hp
 import codecs
@@ -57,7 +58,7 @@ if __name__ == '__main__':
         sv = tf.train.Supervisor(logdir=hp.logdir,
                                  save_model_secs=0)
         with sv.managed_session() as sess:
-            sv.saver.restore(sess, hp.logdir + '/model_epoch_09_gs_9700')
+            sv.saver.restore(sess, hp.logdir + '/model_epoch_09_gs_96')
             # Evaluation
             while True:
                 line = input()

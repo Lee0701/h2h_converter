@@ -8,7 +8,7 @@ from hyperparams import Hyperparams as hp
 import json
 
 vocab_file = 'data/vocab.json'
-text_file = 'data/bible_ko.tsv'
+text_file = 'data/corpus_10k.tsv'
 
 def load_vocab():
     with open(vocab_file, "r") as file:
@@ -40,7 +40,7 @@ def gen_vocab():
     }
 
     with open(vocab_file, "w", encoding="utf-8") as file:
-        json.dump(vocab, file)
+        json.dump(vocab, file, ensure_ascii=False)
 
 def gen_data(lines):
     hangul2idx, idx2hangul, hanja2idx, idx2hanja = load_vocab()

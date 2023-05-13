@@ -1,8 +1,8 @@
 class Hyperparams:
-    batch_size = 32
+    batch_size = 64
     learning_rate = 0.0005
     logdir = "log"
-    maxlen = 150
+    maxlen = 100
     num_epochs = 10
     hidden_units = 256
 
