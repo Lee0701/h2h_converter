@@ -3,12 +3,13 @@
 
 import numpy as np
 import codecs
+import os.path as path
 from hyperparams import Hyperparams as hp
 
 import json
 
-vocab_file = 'data/vocab.json'
-text_file = 'data/corpus_10k.tsv'
+text_file = 'data/corpus1f_100k.tsv'
+vocab_file = path.join(hp.logdir, 'vocab.json')
 
 def load_vocab():
     with open(vocab_file, "r") as file:

@@ -1,6 +1,7 @@
 
 data/
 log/
+*.log/
 eval.txt
 
 # Byte-compiled / optimized / DLL files
