@@ -77,6 +77,9 @@ def load_data(mode="train"):
         hangul_sent, hanja_sent = line.strip().split("\t")
         hangul_sent = hangul_sent.split(' ')
         hanja_sent = hanja_sent.split(' ')
+        if len(hangul_sent) != len(hanja_sent):
+            print('Sentence langth mismatch: %s' % line)
+            continue
         if len(hangul_sent) <= hp.maxlen and len(hanja_sent) <= hp.maxlen:
             x = [hangul2idx.get(hangul, 1) for hangul in hangul_sent]
             y = [hanja2idx.get(hanja, 1) for hanja in hanja_sent]
