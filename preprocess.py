@@ -13,6 +13,8 @@ def preprocess_token(token):
         return '<SRC>'
     elif all([c in hanja_numbers for c in token]):
         return '<SRC>'
+    elif len(token) >= 2 and all([c in hanja_numbers for c in token[:-1]]):
+        return '<SRC> %s' % token[-1]
     return token
 
 def preprocess_line(line):
