@@ -8,7 +8,7 @@ from hyperparams import Hyperparams as hp
 
 import json
 
-text_file = 'data/corpus_100k_pp.tsv'
+text_file = 'data/corpus_1k_aligned_pp.tsv'
 vocab_file = path.join(hp.logdir, 'vocab.json')
 
 def load_vocab():
@@ -75,7 +75,9 @@ def load_data(mode="train"):
     xs, ys = [], []  # vectorized sentences
     for line in codecs.open(text_file, 'r', 'utf-8'):
         hangul_sent, hanja_sent = line.strip().split("\t")
-        if len(hangul_sent) <= hp.maxlen:
+        hangul_sent = hangul_sent.split(' ')
+        hanja_sent = hanja_sent.split(' ')
+        if len(hangul_sent) <= hp.maxlen and len(hanja_sent) <= hp.maxlen:
             x = [hangul2idx.get(hangul, 1) for hangul in hangul_sent]
             y = [hanja2idx.get(hanja, 1) for hanja in hanja_sent]
 
