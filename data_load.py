@@ -8,7 +8,7 @@ from hyperparams import Hyperparams as hp
 
 import json
 
-text_file = 'data/corpus1f_100k.tsv'
+text_file = 'data/corpus_100k_pp.tsv'
 vocab_file = path.join(hp.logdir, 'vocab.json')
 
 def load_vocab():
@@ -28,12 +28,14 @@ def gen_vocab():
     hanguls, hanjas = set(), set()
     for line in codecs.open(text_file, 'r', 'utf-8'):
         hangul_sent, hanja_sent = line.strip().split("\t")
+        hangul_sent = hangul_sent.split(' ')
+        hanja_sent = hanja_sent.split(' ')
         for hangul, hanja in zip(hangul_sent, hanja_sent):
             hanguls.add(hangul)
             hanjas.add(hanja)
     hanjas = hanjas - hanguls
-    hanguls = ["<EMP>", "<OOV>"] + sorted(list(hanguls))
-    hanjas = ["<EMP>", "_"] + sorted(list(hanjas))
+    hanguls = ["<EMP>", "<OOV>", "<SRC>"] + sorted(list(hanguls))
+    hanjas = ["<EMP>", "<OOV>", "<SRC>"] + sorted(list(hanjas))
 
     vocab = {
         "hanguls": hanguls,
